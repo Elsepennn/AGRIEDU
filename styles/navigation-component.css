@@ -1,0 +1,374 @@
+.app-navbar {
+  background: #fff;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(211, 211, 211) !important;
+}
+
+.app-navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 20px;
+  position: relative;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+.app-logo {
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.app-logo img {
+  height: 46px;
+  transition: transform 0.3s ease;
+}
+
+.app-logo:hover img {
+  transform: scale(1.05);
+}
+
+.app-logo .green {
+  color: #64b100;
+}
+
+.app-nav {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  margin: 0 auto;
+  text-align: center;
+  flex: 1;
+}
+
+.app-nav a:not(.app-logout) {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 15px;
+  white-space: nowrap;
+}
+
+.app-nav a:not(.app-logout):hover,
+.app-nav a.active {
+  color: #64b100;
+}
+
+.app-nav a.active {
+  font-weight: 600;
+}
+
+.nav-link {
+  color: #888;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #000;
+}
+
+.nav-link.active {
+  color: #000;
+  font-weight: 600;
+  border-bottom: 2px solid #000;
+}
+
+.app-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.app-menu-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.app-menu-toggle.active {
+  color: #64b100;
+}
+
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  position: relative;
+  justify-self: end;
+  flex-shrink: 0;
+}
+
+.app-logout {
+  color: #e74c3c;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 10px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.app-profile-link {
+  color: #64b100;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 10px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.app-profile-link:hover {
+  background: rgba(100, 177, 0, 0.1);
+  border: 1px solid rgba(100, 177, 0, 0.3);
+}
+
+.app-profile-link i {
+  font-size: 14px;
+  color: #64b100;
+}
+
+.app-logout:hover {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.app-logout i {
+  font-size: 14px;
+  color: #e74c3c;
+}
+
+.app-profile-icon {
+  width: 42px;
+  height: 42px;
+  color: #fff;
+  background-color: #a9e652;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #fff;
+  margin-left: 5px;
+}
+
+.app-profile-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+
+@media (min-width: 1156px) {
+  .app-navbar-content {
+    padding: 0 40px;
+    gap: 30px;
+  }
+
+  .app-nav {
+    gap: 40px;
+  }
+
+  .user-profile-container {
+    gap: 15px;
+  }
+
+ 
+  .mobile-only {
+    display: none !important;
+  }
+
+  .app-navbar-content > .user-profile-container {
+    display: flex !important;
+  }
+}
+
+
+@media (max-width: 1155px) {
+  .app-navbar-content {
+    position: relative;
+    justify-content: space-between;
+  }
+
+  .app-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    grid-template-columns: 1fr;
+    text-align: center;
+    background: #fff;
+    padding: 20px 0;
+    border-radius: 0 0 12px 12px;
+    gap: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    margin-top: 10px;
+  }
+
+  .app-nav.show {
+    display: flex !important;
+    animation: slideDown 0.3s ease;
+  }
+
+  .app-menu-toggle {
+    display: block;
+    order: 3;
+    margin-left: auto;
+  }
+
+  
+  .app-navbar-content > .user-profile-container {
+    display: none !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: none !important;
+  }
+
+  .app-nav.show .mobile-only {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: transparent;
+    padding: 15px 0;
+    border-radius: 0;
+    gap: 15px;
+    box-shadow: none;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+  }
+
+  .mobile-only .app-profile-link,
+  .mobile-only .app-logout {
+    width: auto;
+    justify-content: center;
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-navbar-content {
+    position: relative;
+    justify-content: space-between;
+  }
+
+  .app-nav {
+    grid-column: 1 / -1;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    grid-template-columns: 1fr;
+    text-align: center;
+    background: #fff;
+    padding: 16px 0;
+    border-radius: 0 0 10px 10px;
+    gap: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    margin-top: 8px;
+  }
+
+  .app-menu-toggle {
+    display: block;
+    order: 3;
+    margin-left: auto;
+  }
+
+  
+  .app-navbar-content > .user-profile-container {
+    display: none !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: none !important;
+  }
+
+  .app-nav.show .mobile-only {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: transparent;
+    padding: 12px 0;
+    border-radius: 0;
+    gap: 12px;
+    box-shadow: none;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #eee;
+    margin-top: 12px;
+  }
+
+  .mobile-only .app-profile-link,
+  .mobile-only .app-logout {
+    width: auto;
+    justify-content: center;
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

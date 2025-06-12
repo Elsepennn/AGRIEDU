@@ -1,0 +1,21 @@
+@import "base.css";
+
+@import "navbar.css";
+@import "navigation-component.css";
+@import "hero.css";
+@import "about.css";
+@import "services.css";
+@import "footer.css";
+@import "login.css";
+@import "register.css";
+@import "setupstart.css";
+@import "logout.css";
+@import "profile.css";
+@import "homePage.css";
+@import "learning.css";
+@import "community.css";
+@import "diagnose.css";
+@import "diagnose-form.css";
+@import "chatbot.css";
+
+@import "responsive.css";
