@@ -198,36 +198,40 @@ export default class DiagnosePresenter {
       el.showCameraBtn.style.display = "inline-block";
     });
 
-    el.capturePhoto.addEventListener("click", () => {
-      if (!this.isCaptured) {
-        const ctx = el.capturedCanvas.getContext("2d");
-        el.capturedCanvas.width = el.cameraStream.videoWidth;
-        el.capturedCanvas.height = el.cameraStream.videoHeight;
-        ctx.drawImage(
-          el.cameraStream,
-          0,
-          0,
-          el.capturedCanvas.width,
-          el.capturedCanvas.height
-        );
+el.capturePhoto.addEventListener("click", () => {
+  if (!this.isCaptured) {
+    const ctx = el.capturedCanvas.getContext("2d");
+    el.capturedCanvas.width = el.cameraStream.videoWidth;
+    el.capturedCanvas.height = el.cameraStream.videoHeight;
+    ctx.drawImage(
+      el.cameraStream,
+      0,
+      0,
+      el.capturedCanvas.width,
+      el.capturedCanvas.height
+    );
 
-        el.capturedCanvas.toBlob((blob) => {
-          const file = new File([blob], "captured.png", { type: "image/png" });
-          const dataTransfer = new DataTransfer();
-          dataTransfer.items.add(file);
-          el.photoInput.files = dataTransfer.files;
-        });
+    const previewImage = document.getElementById("imagePreview");
+    previewImage.src = el.capturedCanvas.toDataURL("image/png");
 
-        this.stopCamera(el);
-
-        el.capturedCanvas.style.display = "block";
-        el.cameraStream.style.display = "none";
-        el.capturePhoto.style.display = "none";
-        el.retakePhoto.style.display = "inline-block";
-        el.stopCamera.style.display = "none";
-        this.isCaptured = true;
-      }
+    el.capturedCanvas.toBlob((blob) => {
+      const file = new File([blob], "captured.png", { type: "image/png" });
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(file);
+      el.photoInput.files = dataTransfer.files;
     });
+
+    this.stopCamera(el);
+
+    el.capturedCanvas.style.display = "block";
+    el.cameraStream.style.display = "none";
+    el.capturePhoto.style.display = "none";
+    el.retakePhoto.style.display = "inline-block";
+    el.stopCamera.style.display = "none";
+    this.isCaptured = true;
+  }
+});
+
 
     el.retakePhoto.addEventListener("click", () => {
       this.startCamera(el);
