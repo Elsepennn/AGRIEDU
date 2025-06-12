@@ -104,7 +104,6 @@ export default class LearningPage {
                   <i class="fa fa-search search-icon"></i>
                 </div>
                 <div id="article-grid" class="learning-grid"></div>
-                <div id="pagination" class="pagination"></div>
               </div>
 
               <aside class="learning-filter-panel">
