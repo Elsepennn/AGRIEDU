@@ -132,12 +132,17 @@
   margin-bottom: 40px;
 }
 
+
 .learning-content-area {
   background: white;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
+
 
 .learning-search {
   position: relative;
@@ -865,6 +870,28 @@
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(43, 147, 72, 0.3);
 }
+
+.pagination {
+  margin-top: auto;
+  margin-bottom: 5px; 
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pagination button {
+  margin-top: 20px!important;
+  padding: 5px 10px;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+}
+.pagination button.active-page {
+  background-color: #2b9348 !important;
+  color: white !important;
+}
+
+
 
 @media (min-width: 900px) and (max-width: 1199px) {
   .video-grid {

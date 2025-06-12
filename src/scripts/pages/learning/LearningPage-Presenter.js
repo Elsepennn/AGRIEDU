@@ -12,10 +12,16 @@ function convertToEmbedUrl(url) {
   return match ? `https://www.youtube.com/embed/${match[1]}` : null;
 }
 
-export function renderArticles(container, list) {
+const ITEMS_PER_PAGE = 4;
+
+export function renderArticles(container, list, currentPage = 1) {
   container.innerHTML = "";
 
-  list.forEach((item, index) => {
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const pageItems = list.slice(start, end);
+
+  pageItems.forEach((item, index) => {
     const articleElement = document.createElement("div");
     articleElement.className = "learning-item";
 
@@ -26,14 +32,10 @@ export function renderArticles(container, list) {
       <div class="learning-item-header">
         <h4 class="article-title" data-url="${item.url}">${item.title}</h4>
         <div class="learning-item-actions">
-          <button class="read-btn" data-index="${index}" data-type="${
-      item.type
-    }" title="Mark as read">
+          <button class="read-btn" data-index="${index}" data-type="${item.type}" title="Mark as read">
             <i class="fa fa-circle-o"></i>
           </button>
-          <button class="favorite-btn ${heartClass}" data-index="${index}" data-type="${
-      item.type
-    }" title="Bookmark">
+          <button class="favorite-btn ${heartClass}" data-index="${index}" data-type="${item.type}" title="Bookmark">
             <i class="${heartIcon}"></i>
           </button>
         </div>
@@ -41,15 +43,33 @@ export function renderArticles(container, list) {
       <p class="learning-item-description">${item.description || ""}</p>
     `;
 
-    const titleElement = articleElement.querySelector(".article-title");
-    titleElement.addEventListener("click", () => {
+    articleElement.querySelector(".article-title").addEventListener("click", () => {
       trackArticleClick(item);
       window.open(item.url, "_blank");
     });
 
     container.appendChild(articleElement);
   });
+
+  renderPagination(list.length, currentPage); // panggil pagination
 }
+
+function renderPagination(totalItems, currentPage) {
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  const paginationContainer = document.getElementById("pagination");
+  paginationContainer.innerHTML = "";
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.className = i === currentPage ? "active-page" : "";
+    btn.addEventListener("click", () => {
+      renderArticles(document.getElementById("article-grid"), articles, i);
+    });
+    paginationContainer.appendChild(btn);
+  }
+}
+
 
 function getYoutubeThumbnail(url) {
   const regex = /(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&?/]+)/;
