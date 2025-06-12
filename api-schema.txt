@@ -14,6 +14,7 @@
             "id": "string",
             "username": "string",
             "email": "string",
+            "role": "string (user/admin)",
             "profilePictureUrl": "string",
             "createdAt": "timestamp"
           },
@@ -32,6 +33,7 @@
             "id": "string",
             "username": "string",
             "email": "string",
+            "role": "string (user/admin)",
             "profilePictureUrl": "string"
           },
           "token": "string"
@@ -50,6 +52,7 @@
           "id": "string",
           "username": "string",
           "email": "string",
+          "role": "string (user/admin)",
           "profilePictureUrl": "string",
           "createdAt": "timestamp"
         }
@@ -199,6 +202,7 @@
           "id": "string",
           "username": "string",
           "email": "string",
+          "role": "string (user/admin)",
           "profilePictureUrl": "string",
           "createdAt": "timestamp"
         }
@@ -215,6 +219,7 @@
           "id": "string",
           "username": "string",
           "email": "string",
+          "role": "string (user/admin)",
           "profilePictureUrl": "string",
           "createdAt": "timestamp"
         }
@@ -235,6 +240,7 @@
           "id": "string",
           "username": "string",
           "email": "string",
+          "role": "string (user/admin)",
           "profilePictureUrl": "string",
           "createdAt": "timestamp"
         }
@@ -252,6 +258,7 @@
           "id": "string",
           "username": "string",
           "email": "string",
+          "role": "string (user/admin)",
           "profilePictureUrl": "string",
           "createdAt": "timestamp"
         }
@@ -286,6 +293,7 @@
         "method": "POST",
         "url": "/api/categories",
         "auth": "required",
+        "role": "admin",
         "body": {
           "name": "string",
           "description": "string",
@@ -296,12 +304,14 @@
       "updateCategory": {
         "method": "PUT",
         "url": "/api/categories/{id}",
-        "auth": "required"
+        "auth": "required",
+        "role": "admin"
       },
       "deleteCategory": {
         "method": "DELETE",
         "url": "/api/categories/{id}",
-        "auth": "required"
+        "auth": "required",
+        "role": "admin"
       }
     },
     "learning": {
@@ -385,6 +395,7 @@
         "method": "POST",
         "url": "/api/learning",
         "auth": "required",
+        "role": "admin",
         "body": {
           "title": "string (required)",
           "summary": "string (required)",
@@ -413,7 +424,7 @@
         "method": "PATCH",
         "url": "/api/learning/{id}",
         "auth": "required",
-        "ownerOnly": true,
+        "role": "admin",
         "body": {
           "title": "string (optional)",
           "summary": "string (optional)",
@@ -442,7 +453,7 @@
         "method": "DELETE",
         "url": "/api/learning/{id}",
         "auth": "required",
-        "ownerOnly": true,
+        "role": "admin",
         "response": {
           "msg": "string"
         }
@@ -579,6 +590,29 @@
           "endpoints": "object (all available endpoints)"
         }
       }
+    }
+  },
+  "rolePermissions": {
+    "user": {
+      "description": "Regular user with standard permissions",
+      "permissions": [
+        "view learning content",
+        "bookmark learning",
+        "mark as read",
+        "manage own posts",
+        "manage own comments",
+        "manage own account"
+      ]
+    },
+    "admin": {
+      "description": "Administrator with elevated permissions for learning management",
+      "permissions": [
+        "all user permissions",
+        "create learning content",
+        "edit any learning content",
+        "delete any learning content",
+        "manage categories"
+      ]
     }
   }
 }
