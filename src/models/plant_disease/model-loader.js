@@ -102,22 +102,17 @@ class PlantDiseaseModel {
   async loadModel(modelPath = 'models/plant_disease/model/model.json') {
     try {
       this.modelPath = modelPath;
-      
-      console.log('Attempting to load model from:', modelPath);
-      
+            
       // Check if model exists first
       const modelExists = await this.checkModelExists();
-      console.log('Model exists check result:', modelExists);
       
       if (!modelExists) {
         console.error('Model file not found at path:', modelPath);
         // Try with absolute path from root
         const absolutePath = '/' + modelPath;
-        console.log('Trying absolute path:', absolutePath);
         try {
           const absoluteCheck = await fetch(absolutePath, { method: 'HEAD' });
           if (absoluteCheck.ok) {
-            console.log('Model found at absolute path');
             this.modelPath = absolutePath;
           } else {
             return false;
@@ -128,10 +123,8 @@ class PlantDiseaseModel {
         }
       }
       
-      console.log('Loading model from:', this.modelPath);
       this.model = await tf.loadLayersModel(this.modelPath);
       this.isModelLoaded = true;
-      console.log('Plant disease model loaded successfully');
       return true;
     } catch (error) {
       console.error('Error loading plant disease model:', error);

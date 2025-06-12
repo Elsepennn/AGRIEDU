@@ -3,21 +3,16 @@ import plantDiseaseModel from '../../../models/plant_disease/model-loader.js';
 
 // Debug function to check model loading
 async function debugModelLoading() {
-  console.log('Checking model loading...');
   try {
     const modelExists = await plantDiseaseModel.checkModelExists();
-    console.log('Model exists check:', modelExists);
     
     if (modelExists) {
       const loaded = await plantDiseaseModel.loadModel();
-      console.log('Model loaded successfully:', loaded);
       return loaded;
     } else {
-      console.error('Model files not found');
       return false;
     }
   } catch (error) {
-    console.error('Error during model debug:', error);
     return false;
   }
 }
@@ -74,17 +69,14 @@ export default class DiagnosePresenter {
     // Inisialisasi model saat halaman dimuat
     try {
       // Debug model loading
-      console.log('Starting model initialization...');
       await debugModelLoading();
       
       // Try to initialize the model
-      const modelLoaded = await plantDiseaseService.initModel();
-      console.log('Model initialization result:', modelLoaded);
+      await plantDiseaseService.initModel();
       
-      if (modelLoaded) {
-        console.log('Model berhasil dimuat dan siap digunakan');
+      if (plantDiseaseService.isModelLoaded) {
+        // Model loaded successfully
       } else {
-        console.error('Model tidak berhasil dimuat');
         // Tampilkan pesan di UI
         const analysisResult = document.getElementById("analysisResult");
         if (analysisResult) {
@@ -98,7 +90,7 @@ export default class DiagnosePresenter {
         }
       }
     } catch (error) {
-      console.error('Gagal menginisialisasi model:', error);
+      // Error initializing model
     }
 
     form.addEventListener("submit", async (e) => {
@@ -149,7 +141,6 @@ export default class DiagnosePresenter {
           reanalyzeBtn.style.display = "block";
         }
       } catch (error) {
-        console.error('Error saat analisis:', error);
         analysisResult.innerHTML = `
           <div class="error-message">
             <p><strong>Gagal menganalisis gambar:</strong> ${error.message}</p>
@@ -187,7 +178,7 @@ export default class DiagnosePresenter {
           });
           this.startCamera(el);
         })
-        .catch((err) => console.warn("Gagal mendapatkan perangkat:", err));
+        .catch((err) => {});
     });
 
     el.cameraSelect.addEventListener("change", () => this.startCamera(el));
@@ -368,7 +359,6 @@ el.capturePhoto.addEventListener("click", () => {
 
       // Lakukan diagnosa
       const result = await plantDiseaseService.diagnosePlant(file);
-      console.log('Hasil diagnosa:', result);
 
       // Format persentase
       const confidencePercent = (result.confidence * 100).toFixed(2);

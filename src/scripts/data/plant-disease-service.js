@@ -77,16 +77,13 @@ class PlantDiseaseService {
         const modelLoaded = await plantDiseaseModel.loadModel();
         if (modelLoaded) {
           this.isModelLoaded = true;
-          console.log('Model berhasil dimuat');
           return true;
         } else {
-          console.warn('Model tidak dapat dimuat, mengaktifkan mode simulasi');
           this.simulationMode = true;
           return false;
         }
       } catch (error) {
         console.error('Gagal memuat model:', error);
-        console.warn('Mengaktifkan mode simulasi karena error');
         this.simulationMode = true;
         return false;
       }
@@ -121,7 +118,6 @@ class PlantDiseaseService {
       
       // Jika dalam mode simulasi, berikan hasil simulasi
       if (this.simulationMode) {
-        console.log('Menggunakan mode simulasi untuk prediksi');
         prediction = this._getSimulatedPrediction();
       } else {
         // Lakukan prediksi dengan model
