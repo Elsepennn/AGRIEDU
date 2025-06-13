@@ -154,30 +154,62 @@ form#diagnosis-form {
 }
 
 .simulation-notice {
-  background-color: #fff3cd;
-  color: #856404;
-  padding: 10px;
-  margin-bottom: 15px;
+  background-color: #e2f3fd;
+  border: 1px solid #b8daff;
   border-radius: 4px;
-  border-left: 5px solid #ffeeba;
-  font-size: 14px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #004085;
+}
+
+.simulation-notice i {
+  margin-right: 0.5rem;
+}
+
+.simulation-notice code {
+  background-color: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: monospace;
+  border: 1px solid #dee2e6;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.uncertain-prediction {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.warning-message {
+  color: #856404;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.warning-message i {
+  margin-right: 0.5rem;
 }
 
 .error-message {
   background-color: #f8d7da;
-  color: #721c24;
-  padding: 15px;
-  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
   border-radius: 4px;
-  border-left: 5px solid #f5c6cb;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
-.error-message strong {
-  font-weight: 600;
+.error-message i {
+  color: #721c24;
+  margin-right: 0.5rem;
 }
 
-.error-message ul, .error-message ol {
-  margin: 0.5rem 0 0.5rem 1.5rem;
+.error-message ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
 }
 
 .error-message li {

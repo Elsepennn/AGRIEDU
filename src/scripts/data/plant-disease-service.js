@@ -10,60 +10,55 @@ class PlantDiseaseService {
         treatment: 'Lanjutkan perawatan rutin dengan menyiram secukupnya dan berikan pupuk sesuai kebutuhan.',
         prevention: 'Jaga kebersihan area sekitar tanaman dan lakukan pemeriksaan rutin untuk deteksi dini penyakit.'
       },
-      'Blight': {
-        description: 'Blight adalah penyakit tanaman yang disebabkan oleh jamur atau bakteri, menyebabkan kerusakan cepat pada daun, batang, dan buah.',
-        treatment: 'Buang bagian tanaman yang terinfeksi. Aplikasikan fungisida berbahan aktif klorotalonil, mankozeb, atau tembaga sesuai petunjuk. Pastikan drainase tanah baik dan hindari menyiram daun secara langsung.',
-        prevention: 'Gunakan varietas tanaman yang tahan penyakit. Rotasi tanaman setiap musim. Jaga jarak tanam yang cukup untuk sirkulasi udara. Hindari menyiram daun di sore hari.'
-      },
-      'Leaf Spot': {
-        description: 'Bercak daun adalah infeksi jamur yang menyebabkan bintik-bintik coklat atau hitam pada daun tanaman.',
-        treatment: 'Buang daun yang terinfeksi parah. Aplikasikan fungisida berbahan aktif mankozeb atau tembaga. Pastikan tanaman mendapat nutrisi yang cukup untuk memperkuat daya tahan.',
-        prevention: 'Hindari menyiram daun di sore hari. Jaga jarak antar tanaman untuk sirkulasi udara yang baik. Lakukan rotasi tanaman dan bersihkan sisa-sisa tanaman di akhir musim.'
-      },
-      'Powdery Mildew': {
-        description: 'Embun tepung adalah infeksi jamur yang menyebabkan lapisan putih seperti tepung pada permukaan daun.',
-        treatment: 'Aplikasikan fungisida berbahan aktif sulfur atau potasium bikarbonat. Semprotkan larutan baking soda (1 sendok teh baking soda + 1 liter air + sedikit sabun cuci piring) pada daun yang terinfeksi ringan.',
-        prevention: 'Tanam di lokasi dengan sinar matahari penuh. Jaga jarak antar tanaman. Hindari pemupukan nitrogen berlebihan. Gunakan mulsa untuk mencegah spora jamur menciprat dari tanah ke daun.'
-      },
-      'Rust': {
-        description: 'Karat adalah penyakit jamur yang menyebabkan bintik-bintik oranye atau coklat kemerahan pada daun dan batang.',
-        treatment: 'Buang bagian tanaman yang terinfeksi. Aplikasikan fungisida berbahan aktif tembaga, mankozeb, atau triazol sesuai petunjuk. Hindari menyiram daun secara langsung.',
-        prevention: 'Gunakan varietas tanaman yang tahan karat. Jaga kebersihan kebun dengan membersihkan sisa-sisa tanaman. Rotasi tanaman dan jaga jarak tanam yang cukup.'
-      },
       'Bacterial Spot': {
-        description: 'Bercak bakteri adalah infeksi yang menyebabkan bintik-bintik gelap dengan tepi kuning pada daun, batang, dan buah.',
-        treatment: 'Buang bagian tanaman yang terinfeksi. Aplikasikan bakterisida berbahan tembaga sesuai petunjuk. Hindari menyiram daun di sore hari dan pastikan drainase tanah baik.',
-        prevention: 'Gunakan benih dan bibit bebas penyakit. Rotasi tanaman dengan tanaman non-inang. Hindari bekerja di kebun saat tanaman basah untuk mencegah penyebaran bakteri.'
+        description: 'Bercak bakteri adalah penyakit yang disebabkan oleh bakteri Xanthomonas spp. yang menyebabkan bercak-bercak kecil berwarna coklat atau hitam pada daun, batang, dan buah.',
+        treatment: 'Buang bagian tanaman yang terinfeksi. Aplikasikan bakterisida berbahan aktif tembaga atau streptomisin. Hindari menyiram daun secara langsung.',
+        prevention: 'Gunakan benih bersertifikat. Jaga jarak tanam yang cukup. Hindari menyiram daun di sore hari. Rotasi tanaman setiap musim.'
       },
-      'Scab': {
-        description: 'Kudis adalah penyakit jamur yang menyebabkan bercak gelap dan kasar pada daun dan buah, terutama pada tanaman apel.',
-        treatment: 'Aplikasikan fungisida berbahan aktif tembaga atau kaptan saat musim semi dan secara berkala sesuai petunjuk. Buang daun dan buah yang terinfeksi parah.',
-        prevention: 'Bersihkan daun-daun yang jatuh di musim gugur. Pangkas pohon untuk meningkatkan sirkulasi udara. Gunakan varietas apel yang tahan terhadap kudis.'
+      'Early Blight': {
+        description: 'Early blight adalah penyakit jamur yang menyebabkan bercak-bercak konsentris pada daun, batang, dan buah. Biasanya dimulai dari daun bagian bawah.',
+        treatment: 'Buang daun yang terinfeksi. Aplikasikan fungisida berbahan aktif klorotalonil atau mankozeb. Pastikan drainase tanah baik.',
+        prevention: 'Gunakan varietas tahan penyakit. Rotasi tanaman. Jaga jarak tanam yang cukup. Hindari menyiram daun di sore hari.'
       },
-      'Mold': {
-        description: 'Jamur daun menyebabkan lapisan berjamur pada permukaan daun, biasanya berwarna abu-abu atau coklat.',
-        treatment: 'Buang bagian tanaman yang terinfeksi. Aplikasikan fungisida berbahan aktif klorotalonil atau mankozeb. Kurangi kelembaban di sekitar tanaman dengan meningkatkan sirkulasi udara.',
-        prevention: 'Jaga jarak tanam yang cukup. Hindari menyiram berlebihan dan siram di pagi hari. Pasang mulsa untuk mencegah percikan air dari tanah ke daun.'
+      'Late Blight': {
+        description: 'Late blight adalah penyakit jamur yang menyebabkan bercak-bercak berair pada daun dan batang, serta pembusukan pada buah. Dapat menyebar dengan cepat dalam kondisi lembab.',
+        treatment: 'Buang dan hancurkan bagian tanaman yang terinfeksi. Aplikasikan fungisida berbahan aktif tembaga atau metalaksil. Tingkatkan sirkulasi udara.',
+        prevention: 'Gunakan varietas tahan penyakit. Rotasi tanaman. Jaga jarak tanam yang cukup. Hindari menyiram daun di sore hari.'
       },
-      'Yellow Virus': {
-        description: 'Virus kuning menyebabkan daun menguning, kerdil, dan pertumbuhan tanaman terhambat. Ditularkan oleh serangga seperti kutu daun atau kutu kebul.',
-        treatment: 'Tidak ada obat untuk infeksi virus. Buang tanaman yang terinfeksi untuk mencegah penyebaran. Kendalikan serangga vektor dengan insektisida atau sabun insektisida.',
-        prevention: 'Gunakan jaring anti-serangga. Tanam varietas tahan virus jika tersedia. Kendalikan populasi serangga vektor secara rutin. Jaga kebersihan kebun.'
+      'Leaf Mold': {
+        description: 'Leaf mold adalah penyakit jamur yang menyebabkan bercak-bercak kuning pada permukaan atas daun dan pertumbuhan jamur berwarna abu-abu di permukaan bawah.',
+        treatment: 'Buang daun yang terinfeksi. Aplikasikan fungisida berbahan aktif klorotalonil atau mankozeb. Tingkatkan sirkulasi udara.',
+        prevention: 'Gunakan varietas tahan penyakit. Jaga jarak tanam yang cukup. Hindari kelembaban tinggi. Rotasi tanaman.'
       },
-      'Black Rot': {
-        description: 'Busuk hitam adalah penyakit jamur yang menyerang tanaman anggur, menyebabkan bercak coklat dengan tepi hitam pada daun dan buah yang membusuk.',
-        treatment: 'Buang bagian tanaman yang terinfeksi. Aplikasikan fungisida berbahan aktif mankozeb, klorotalonil, atau tembaga sesuai petunjuk. Pastikan drainase tanah baik.',
-        prevention: 'Pangkas tanaman untuk meningkatkan sirkulasi udara. Bersihkan sisa-sisa tanaman di akhir musim. Rotasi tanaman dan jaga jarak tanam yang cukup.'
+      'Yellow Leaf Curl Virus': {
+        description: 'Virus keriting daun kuning adalah penyakit virus yang menyebabkan daun mengeriting ke atas dan menguning, serta pertumbuhan tanaman terhambat.',
+        treatment: 'Buang tanaman yang terinfeksi. Kendalikan vektor virus (kutu kebul) dengan insektisida. Gunakan perangkap kuning.',
+        prevention: 'Gunakan benih bersertifikat. Pasang jaring anti serangga. Kendalikan gulma. Rotasi tanaman.'
       },
       'Mosaic Virus': {
-        description: 'Virus mosaik menyebabkan pola mosaik (belang-belang) pada daun, pertumbuhan terhambat, dan daun mengeriting. Ditularkan oleh serangga atau kontak langsung.',
-        treatment: 'Tidak ada obat untuk infeksi virus. Buang tanaman yang terinfeksi untuk mencegah penyebaran. Kendalikan serangga vektor dengan insektisida atau sabun insektisida.',
-        prevention: 'Gunakan benih dan bibit bebas virus. Cuci tangan dan alat berkebun sebelum menyentuh tanaman sehat. Kendalikan serangga vektor dan gulma yang dapat menjadi inang virus.'
+        description: 'Virus mosaik menyebabkan pola mosaik hijau-kuning pada daun, pertumbuhan terhambat, dan daun mengeriting.',
+        treatment: 'Buang tanaman yang terinfeksi. Kendalikan vektor virus (kutu daun) dengan insektisida. Gunakan perangkap kuning.',
+        prevention: 'Gunakan benih bersertifikat. Pasang jaring anti serangga. Kendalikan gulma. Rotasi tanaman.'
+      },
+      'Target Spot': {
+        description: 'Target spot adalah penyakit jamur yang menyebabkan bercak-bercak konsentris dengan pusat berwarna coklat dan tepi kuning pada daun.',
+        treatment: 'Buang daun yang terinfeksi. Aplikasikan fungisida berbahan aktif klorotalonil atau mankozeb. Tingkatkan sirkulasi udara.',
+        prevention: 'Gunakan varietas tahan penyakit. Jaga jarak tanam yang cukup. Hindari kelembaban tinggi. Rotasi tanaman.'
       },
       'Spider Mites': {
-        description: 'Tungau laba-laba adalah hama kecil yang menghisap cairan tanaman, menyebabkan bintik-bintik kuning atau putih pada daun dan jaring halus.',
-        treatment: 'Semprotkan air bertekanan kuat untuk menghilangkan tungau. Aplikasikan minyak hortikultura atau sabun insektisida. Untuk serangan parah, gunakan akarisida sesuai petunjuk.',
-        prevention: 'Jaga kelembaban udara yang cukup karena tungau menyukai kondisi kering. Periksa tanaman secara rutin. Introduksi predator alami seperti kumbang ladybug atau tungau predator.'
+        description: 'Tungau laba-laba adalah hama kecil yang menghisap cairan tanaman, menyebabkan bintik-bintik kuning pada daun dan jaring halus di permukaan bawah daun.',
+        treatment: 'Semprotkan air bertekanan kuat untuk menghilangkan tungau. Aplikasikan minyak hortikultura atau sabun insektisida. Untuk serangan parah, gunakan akarisida.',
+        prevention: 'Jaga kelembaban udara yang cukup. Periksa tanaman secara rutin. Introduksi predator alami seperti kumbang ladybug.'
+      },
+      'Septoria Leaf Spot': {
+        description: 'Bercak daun septoria adalah penyakit jamur yang menyebabkan bercak-bercak kecil berwarna coklat dengan pusat abu-abu pada daun.',
+        treatment: 'Buang daun yang terinfeksi. Aplikasikan fungisida berbahan aktif klorotalonil atau mankozeb. Pastikan drainase tanah baik.',
+        prevention: 'Gunakan varietas tahan penyakit. Rotasi tanaman. Jaga jarak tanam yang cukup. Hindari menyiram daun di sore hari.'
+      },
+      'Unknown': {
+        description: 'Tidak dapat menentukan penyakit dengan pasti. Silakan coba ambil foto dengan pencahayaan yang lebih baik dan fokus pada bagian tanaman yang terinfeksi.',
+        treatment: 'Konsultasikan dengan ahli pertanian untuk penanganan yang tepat.',
+        prevention: 'Lakukan pemeriksaan rutin pada tanaman dan jaga kebersihan area sekitar tanaman.'
       }
     };
   }
@@ -77,8 +72,10 @@ class PlantDiseaseService {
         const modelLoaded = await plantDiseaseModel.loadModel();
         if (modelLoaded) {
           this.isModelLoaded = true;
+          this.simulationMode = false;
           return true;
         } else {
+          console.warn('Model tidak dapat dimuat, menggunakan mode simulasi');
           this.simulationMode = true;
           return false;
         }
@@ -125,19 +122,24 @@ class PlantDiseaseService {
       }
       
       // Tambahkan informasi penyakit
+      const diseaseClass = prediction.className || 'Unknown';
       const result = {
         ...prediction,
-        diseaseInfo: this.diseaseInfo[prediction.className] || {
-          description: 'Informasi tidak tersedia',
-          treatment: 'Konsultasikan dengan ahli pertanian',
-          prevention: 'Lakukan pemeriksaan rutin pada tanaman'
-        }
+        diseaseInfo: this.diseaseInfo[diseaseClass] || this.diseaseInfo['Unknown']
       };
 
       return result;
     } catch (error) {
       console.error('Gagal melakukan diagnosa:', error);
-      throw error;
+      // Return unknown prediction with error info
+      return {
+        className: 'Unknown',
+        originalClassName: 'Unknown',
+        confidence: 0,
+        isConfident: false,
+        diseaseInfo: this.diseaseInfo['Unknown'],
+        error: error.message
+      };
     }
   }
 
@@ -147,7 +149,7 @@ class PlantDiseaseService {
    */
   _getSimulatedPrediction() {
     // Pilih penyakit secara acak untuk simulasi
-    const diseaseClasses = Object.keys(this.diseaseInfo);
+    const diseaseClasses = Object.keys(this.diseaseInfo).filter(cls => cls !== 'Unknown');
     const randomIndex = Math.floor(Math.random() * diseaseClasses.length);
     const className = diseaseClasses[randomIndex];
     
@@ -169,28 +171,22 @@ class PlantDiseaseService {
         originalClassName: `Sample ${p.className}`,
         confidence: p.confidence
       })),
-      groupedPredictions: groupedPredictions
+      groupedPredictions: groupedPredictions,
+      isConfident: true
     };
   }
 
   /**
-   * Membuat elemen gambar dari file
+   * Membuat HTMLImageElement dari File
    * @param {File} file - File gambar
-   * @returns {Promise<HTMLImageElement>} - Elemen gambar
+   * @returns {Promise<HTMLImageElement>} - Image element
    */
   _createImageFromFile(file) {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      
-      reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = (err) => reject(err);
-        img.src = e.target.result;
-      };
-      
-      reader.onerror = (err) => reject(err);
-      reader.readAsDataURL(file);
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error('Gagal memuat gambar'));
+      img.src = URL.createObjectURL(file);
     });
   }
 }

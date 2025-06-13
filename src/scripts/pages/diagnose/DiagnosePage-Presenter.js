@@ -306,35 +306,46 @@ el.capturePhoto.addEventListener("click", () => {
       <div class="diagnosis-result">
         <h3>Hasil Diagnosis:</h3>
         <div class="diagnosis-main">
+          ${!result.isConfident ? `
+            <div class="uncertain-prediction">
+              <p class="warning-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                Model tidak yakin dengan prediksi ini (${confidence}% confidence)
+              </p>
+              <p>Saran: Coba ambil foto dengan pencahayaan yang lebih baik dan fokus pada bagian tanaman yang terinfeksi.</p>
+            </div>
+          ` : ''}
           <p class="diagnosis-name">${result.className}</p>
           <p class="diagnosis-detail">${result.originalClassName || ''}</p>
           <p class="diagnosis-confidence">Tingkat keyakinan: ${confidence}%</p>
         </div>
         
-        <div class="diagnosis-info">
-          <h4>Deskripsi:</h4>
-          <p>${result.diseaseInfo.description}</p>
+        ${result.isConfident ? `
+          <div class="diagnosis-info">
+            <h4>Deskripsi:</h4>
+            <p>${result.diseaseInfo.description}</p>
+            
+            <h4>Penanganan:</h4>
+            <p>${result.diseaseInfo.treatment}</p>
+            
+            <h4>Pencegahan:</h4>
+            <p>${result.diseaseInfo.prevention}</p>
+          </div>
           
-          <h4>Penanganan:</h4>
-          <p>${result.diseaseInfo.treatment}</p>
-          
-          <h4>Pencegahan:</h4>
-          <p>${result.diseaseInfo.prevention}</p>
-        </div>
-        
-        <div class="other-predictions">
-          <h4>Kategori Penyakit Lainnya:</h4>
-          <ul>
-            ${result.groupedPredictions ? 
-              result.groupedPredictions.slice(1, 4).map(pred => 
-                `<li>${pred.className}: ${(pred.confidence * 100).toFixed(2)}%</li>`
-              ).join('') : 
-              result.allPredictions.slice(1, 3).map(pred => 
-                `<li>${pred.className}: ${(pred.confidence * 100).toFixed(2)}%</li>`
-              ).join('')
-            }
-          </ul>
-        </div>
+          <div class="other-predictions">
+            <h4>Kategori Penyakit Lainnya:</h4>
+            <ul>
+              ${result.groupedPredictions ? 
+                result.groupedPredictions.slice(1, 4).map(pred => 
+                  `<li>${pred.className}: ${(pred.confidence * 100).toFixed(2)}%</li>`
+                ).join('') : 
+                result.allPredictions.slice(1, 3).map(pred => 
+                  `<li>${pred.className}: ${(pred.confidence * 100).toFixed(2)}%</li>`
+                ).join('')
+              }
+            </ul>
+          </div>
+        ` : ''}
       </div>
     `;
     
@@ -366,31 +377,51 @@ el.capturePhoto.addEventListener("click", () => {
       // Tampilkan hasil
       diagnosisResult.innerHTML = `
         <h2>Hasil Analisis</h2>
-        ${plantDiseaseService.simulationMode ? '<div class="simulation-notice">Catatan: Hasil ini adalah simulasi karena model AI belum tersedia.</div>' : ''}
-        ${plantDiseaseService.simulationMode ? '<div class="simulation-notice">Untuk hasil yang akurat, pastikan file model telah ditempatkan dengan benar.</div>' : ''}
+        ${plantDiseaseService.simulationMode ? `
+          <div class="simulation-notice">
+            <i class="fas fa-info-circle"></i>
+            Catatan: Hasil ini adalah simulasi karena model AI belum tersedia.
+            <br>
+            Untuk hasil yang akurat, pastikan file model telah ditempatkan dengan benar di:
+            <code>dist/models/plant_disease/model/model.json</code>
+          </div>
+        ` : ''}
         
         <h3>Hasil Diagnosis:</h3>
-        <div class="diagnosis-result">${result.className}</div>
+        <div class="diagnosis-result">
+          ${!result.isConfident ? `
+            <div class="uncertain-prediction">
+              <p class="warning-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                Model tidak yakin dengan prediksi ini (${confidencePercent}% confidence)
+              </p>
+              <p>Saran: Coba ambil foto dengan pencahayaan yang lebih baik dan fokus pada bagian tanaman yang terinfeksi.</p>
+            </div>
+          ` : ''}
+          ${result.className}
+        </div>
         
         <div class="original-class">${result.originalClassName}</div>
         
         <p>Tingkat keyakinan: ${confidencePercent}%</p>
         
-        <h3>Deskripsi:</h3>
-        <p>${result.diseaseInfo.description}</p>
-        
-        <h3>Penanganan:</h3>
-        <p>${result.diseaseInfo.treatment}</p>
-        
-        <h3>Pencegahan:</h3>
-        <p>${result.diseaseInfo.prevention}</p>
-        
-        <h3>Kategori Penyakit Lainnya:</h3>
-        <ul class="other-diseases">
-          ${result.groupedPredictions.slice(1, 4).map(pred => 
-            `<li>${pred.className}: ${(pred.confidence * 100).toFixed(2)}%</li>`
-          ).join('')}
-        </ul>
+        ${result.isConfident ? `
+          <h3>Deskripsi:</h3>
+          <p>${result.diseaseInfo.description}</p>
+          
+          <h3>Penanganan:</h3>
+          <p>${result.diseaseInfo.treatment}</p>
+          
+          <h3>Pencegahan:</h3>
+          <p>${result.diseaseInfo.prevention}</p>
+          
+          <h3>Kategori Penyakit Lainnya:</h3>
+          <ul class="other-diseases">
+            ${result.groupedPredictions.slice(1, 4).map(pred => 
+              `<li>${pred.className}: ${(pred.confidence * 100).toFixed(2)}%</li>`
+            ).join('')}
+          </ul>
+        ` : ''}
       `;
       
       // Tampilkan hasil
@@ -399,8 +430,21 @@ el.capturePhoto.addEventListener("click", () => {
       console.error('Error:', error);
       diagnosisResult.innerHTML = `
         <div class="error-message">
-          <p>Terjadi kesalahan saat memproses gambar.</p>
+          <p><i class="fas fa-exclamation-circle"></i> Terjadi kesalahan saat memproses gambar.</p>
           <p>Detail: ${error.message}</p>
+          <p>Kemungkinan penyebab:</p>
+          <ul>
+            <li>Format gambar tidak didukung</li>
+            <li>Ukuran gambar terlalu besar</li>
+            <li>Model belum dimuat dengan benar</li>
+          </ul>
+          <p>Saran:</p>
+          <ul>
+            <li>Gunakan format JPG atau PNG</li>
+            <li>Ukuran gambar maksimal 5MB</li>
+            <li>Pastikan pencahayaan cukup</li>
+            <li>Fokus pada bagian tanaman yang terinfeksi</li>
+          </ul>
         </div>
       `;
       diagnosisResult.style.display = 'block';
