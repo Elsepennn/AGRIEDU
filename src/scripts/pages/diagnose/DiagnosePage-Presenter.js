@@ -1,7 +1,6 @@
 import plantDiseaseService from '../../data/plant-disease-service.js';
 import plantDiseaseModel from '../../../models/plant_disease/model-loader.js';
 
-// Debug function to check model loading
 async function debugModelLoading() {
   try {
     const modelExists = await plantDiseaseModel.checkModelExists();
@@ -66,31 +65,25 @@ export default class DiagnosePresenter {
   async initFormSubmit() {
     const { form } = this.view.getElements();
 
-    // Inisialisasi model saat halaman dimuat
     try {
-      // Debug model loading
+
       await debugModelLoading();
       
-      // Try to initialize the model
       await plantDiseaseService.initModel();
       
       if (plantDiseaseService.isModelLoaded) {
-        // Model loaded successfully
       } else {
-        // Tampilkan pesan di UI
         const analysisResult = document.getElementById("analysisResult");
-        if (analysisResult) {
-          analysisResult.innerHTML = `
-            <div class="error-message">
-              <p>Model klasifikasi penyakit tanaman belum tersedia.</p>
-              <p>Pastikan file model telah ditempatkan di folder yang benar:</p>
-              <code>dist/models/plant_disease/model/model.json</code>
-            </div>
-          `;
-        }
+    if (analysisResult) {
+      analysisResult.innerHTML = `
+      <div class="info-message">
+      <p>Anda belum mengunggah gambar untuk dianalisis.</p>
+    </div>
+  `;
+}
+
       }
     } catch (error) {
-      // Error initializing model
     }
 
     form.addEventListener("submit", async (e) => {
@@ -143,7 +136,7 @@ export default class DiagnosePresenter {
       } catch (error) {
         analysisResult.innerHTML = `
           <div class="error-message">
-            <p><strong>Gagal menganalisis gambar:</strong> ${error.message}</p>
+            <p><strong>Gagal menganalisis gambar:</strong></p>
             <p>Kemungkinan penyebab:</p>
             <ul>
               <li>Model belum dimuat dengan benar</li>
@@ -298,10 +291,8 @@ el.capturePhoto.addEventListener("click", () => {
   displayAnalysisResult(result) {
     const analysisResult = document.getElementById("analysisResult");
     
-    // Format persentase confidence
     const confidence = (result.confidence * 100).toFixed(2);
     
-    // Buat HTML untuk hasil analisis
     const resultHTML = `
       <div class="diagnosis-result">
         <h3>Hasil Diagnosis:</h3>
@@ -364,17 +355,10 @@ el.capturePhoto.addEventListener("click", () => {
     }
 
     try {
-      // Tampilkan loading
       loadingIndicator.style.display = 'block';
       diagnosisResult.style.display = 'none';
-
-      // Lakukan diagnosa
       const result = await plantDiseaseService.diagnosePlant(file);
-
-      // Format persentase
       const confidencePercent = (result.confidence * 100).toFixed(2);
-      
-      // Tampilkan hasil
       diagnosisResult.innerHTML = `
         <h2>Hasil Analisis</h2>
         ${plantDiseaseService.simulationMode ? `
@@ -424,7 +408,6 @@ el.capturePhoto.addEventListener("click", () => {
         ` : ''}
       `;
       
-      // Tampilkan hasil
       diagnosisResult.style.display = 'block';
     } catch (error) {
       console.error('Error:', error);
@@ -449,7 +432,6 @@ el.capturePhoto.addEventListener("click", () => {
       `;
       diagnosisResult.style.display = 'block';
     } finally {
-      // Sembunyikan loading
       loadingIndicator.style.display = 'none';
     }
   }
