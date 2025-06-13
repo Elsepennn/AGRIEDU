@@ -225,9 +225,11 @@ const CommunityModel = {
   },
 
   async getComments(postId) {
+    // Ensure we're using the correct post ID format
+    const cleanPostId = postId.replace(/[^a-zA-Z0-9]/g, '');
     const url = `${
       CONFIG.BASE_URL
-    }${CONFIG.API_ENDPOINTS.COMMENTS.GET_ALL.replace("{postId}", postId)}`;
+    }${CONFIG.API_ENDPOINTS.COMMENTS.GET_ALL.replace("{postId}", cleanPostId)}`;
     const token = authService.getToken();
 
     try {
@@ -270,9 +272,11 @@ const CommunityModel = {
   },
 
   async createComment(postId, content) {
+    // Ensure we're using the correct post ID format
+    const cleanPostId = postId.replace(/[^a-zA-Z0-9]/g, '');
     const url = `${
       CONFIG.BASE_URL
-    }${CONFIG.API_ENDPOINTS.COMMENTS.CREATE.replace("{postId}", postId)}`;
+    }${CONFIG.API_ENDPOINTS.COMMENTS.CREATE.replace("{postId}", cleanPostId)}`;
     const token = authService.getToken();
 
     if (!token) {
@@ -286,7 +290,10 @@ const CommunityModel = {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ 
+          content,
+          postId: cleanPostId 
+        }),
       });
 
       const responseText = await response.text();
@@ -330,11 +337,14 @@ const CommunityModel = {
   },
 
   async deleteComment(postId, commentId) {
+    // Ensure we're using the correct post ID format
+    const cleanPostId = postId.replace(/[^a-zA-Z0-9]/g, '');
+    const cleanCommentId = commentId.replace(/[^a-zA-Z0-9]/g, '');
     const url = `${
       CONFIG.BASE_URL
-    }${CONFIG.API_ENDPOINTS.COMMENTS.DELETE.replace("{postId}", postId).replace(
+    }${CONFIG.API_ENDPOINTS.COMMENTS.DELETE.replace("{postId}", cleanPostId).replace(
       "{commentId}",
-      commentId
+      cleanCommentId
     )}`;
     const token = authService.getToken();
 

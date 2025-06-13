@@ -27,15 +27,19 @@ Proyek ini adalah setup dasar untuk aplikasi web yang menggunakan webpack untuk 
 ## Scripts
 
 - Build for Production:
+
   ```shell
   npm run build
   ```
+
   Script ini menjalankan webpack dalam mode production menggunakan konfigurasi `webpack.prod.js` dan menghasilkan sejumlah file build ke direktori `dist`.
 
 - Start Development Server:
+
   ```shell
   npm run start-dev
   ```
+
   Script ini menjalankan server pengembangan webpack dengan fitur live reload dan mode development sesuai konfigurasi di`webpack.dev.js`.
 
 - Serve:
@@ -68,85 +72,90 @@ starter-project/
 ```
 
 # alur pemakaian aplikasi
+
 ## Registrasi & Onboarding
-1. Pengguna membuka aplikasi
-2. Tampilan Landing Page muncul (info singkat tentang AgriEdu)
-3. Pengguna memilih "Daftar" atau "Masuk"
->	Jika "Daftar":
-•	 Input: Username, Email, Password, Konfirmasi Password
-•	 Sistem cek validasi, jika valid, lanjut
->	Halaman Onboarding:
-•	Input: Nama, Lokasi, Level Pengalaman, Minat Bertani
-•	Klik "Simpan"
->	Sistem arahkan ke Home (halaman utama)
->	Jika “Masuk”
->	Pengguna klik tombol “Masuk”.
-•	Halaman Login tampil:
-•	Input Email.
-•	Input Password.
-•	Tombol “Lupa Password” (opsional).
->	Sistem mengecek kredensial:
-•	Jika salah akan muncul pesan error.
-•	Jika benar akan lanjut ke Home
->	Jika profil belum lengkap (misalnya onboarding belum diisi):
-•	Sistem akan mengarahkan ke halaman onboarding untuk isi Nama, Lokasi, Level, Minat.
->	Jika profil sudah lengkap:
-•	Langsung masuk ke Halaman Utama/Home
+
+1.  Pengguna membuka aplikasi
+2.  Tampilan Landing Page muncul (info singkat tentang AgriEdu)
+3.  Pengguna memilih "Daftar" atau "Masuk"
+    >     Jika "Daftar":
+    >
+    > • Input: Username, Email, Password, Konfirmasi Password
+    > • Sistem cek validasi, jika valid, lanjut
+    > Halaman Onboarding:
+    > • Input: Nama, Lokasi, Level Pengalaman, Minat Bertani
+    > • Klik "Simpan"
+    > Sistem arahkan ke Home (halaman utama)
+    > Jika “Masuk”
+    > Pengguna klik tombol “Masuk”.
+    > • Halaman Login tampil:
+    > • Input Email.
+    > • Input Password.
+    > • Tombol “Lupa Password” (opsional).
+    > Sistem mengecek kredensial:
+    > • Jika salah akan muncul pesan error.
+    > • Jika benar akan lanjut ke Home
+    > Jika profil belum lengkap (misalnya onboarding belum diisi):
+    > • Sistem akan mengarahkan ke halaman onboarding untuk isi Nama, Lokasi, Level, Minat.
+    > Jika profil sudah lengkap:
+    > • Langsung masuk ke Halaman Utama/Home
 
 ## Menu Navigasi Utama:
-> Profil
->	Pembelajaran (ke Pusat Pembelajaran Digital)
->	Komunitas (ke Forum Diskusi)
->	Diagnosa Tanaman
->	Chatbot AI Assistant
 
-##Pusat Pembelajaran Digital
-1.	Pengguna masuk ke menu "Belajar"
-2.	Sistem menampilkan filter
->	Berdasarkan Level (Pemula - Lanjutan)
->	Berdasarkan Jenis Tanaman (Sayur, Buah, Hias)
->	Berdasarkan Metode (Konvensional, Organik, Hidroponik)
-3.	Pengguna memilih materi
->	Sistem tampilkan konten: Artikel + Gambar / Video / Infografis
->	Sistem catat materi yang sudah dibaca
-4.	Pengguna bisa Menyimpan materi sebagai favorit dan melihat progres belajar di dashboard
+> Profil
+> Pembelajaran (ke Pusat Pembelajaran Digital)
+> Komunitas (ke Forum Diskusi)
+> Diagnosa Tanaman
+> Chatbot AI Assistant
+
+## Pusat Pembelajaran Digital
+
+1.  Pengguna masuk ke menu "Belajar"
+2.  Sistem menampilkan filter
+    > Berdasarkan Level (Pemula - Lanjutan)
+    > Berdasarkan Jenis Tanaman (Sayur, Buah, Hias)
+    > Berdasarkan Metode (Konvensional, Organik, Hidroponik)
+3.  Pengguna memilih materi
+    > Sistem tampilkan konten: Artikel + Gambar / Video / Infografis
+    > Sistem catat materi yang sudah dibaca
+4.  Pengguna bisa Menyimpan materi sebagai favorit
 
 ## Diagnosa Tanaman
-1.	Pengguna masuk ke menu "Diagnosa"
->	Pilih metode upload
-•	Langsung Kamera
-•	Ambil dari Galeri
-2.	Unggah foto tanaman bermasalah
->	Loading "Sedang Menganalisis..."  
->	Hasil Deteksi:
-•	Nama Tanaman
-•	Kondisi Tanaman (Sehat/Tidak Sehat)
-•	Kemungkinan Penyakit
-•	Rekomendasi Perawatan
-•	Link Artikel Terkait
->	Pengguna bisa menyimpan hasil atau Bagikan ke Komunitas
+
+1. Pengguna masuk ke menu "Diagnosa"
+   > Pilih metode unggah gambar:
+   > • Langsung dari Kamera
+   > • Ambil dari Galeri
+2. Unggah foto tanaman yang bermasalah
+   > Muncul status: "Sedang Menganalisis..."
+   > Setelah analisis selesai, tampilkan hasil diagnosa:
+   > • Hasil Diagnosis (nama penyakit + tingkat keyakinan)
+   > • Deskripsi penyakit
+   > • Penanganan
+   > • Pencegahan
+   > • Kategori penyakit lainnya (dengan persentase keyakinan)
 
 ## Komunitas Pengetahuan
-1.	Pengguna buka menu "Komunitas"
->	Tampilan forum:
-•	Daftar topik diskusi populer dan terbaru
-•	Filter berdasarkan kategori (Buah, Sayur, Urban Farming, dll)
->	Pengguna bisa
-•	Membaca dan membalas thread
-•	Memberi upvote (jika fitur ini diaktifkan)
-•	Membuat topik diskusi baru
-•	Cari thread via keyword
-•	Buat postingan berbagi pengalaman (Judul, Deskripsi, Foto, Tag)
->	Sistem dapat menampilkan notifikasi harian:
-•	"Sudahkah anda berkebun hari ini? 🌱"
+
+1. Pengguna membuka menu "Komunitas"
+   > Tampilan awal:
+   > • Daftar thread diskusi terbaru (ditampilkan berdasarkan waktu posting terbaru)
+2. Pengguna dapat:
+   > Membaca dan membalas thread
+   > Membuat topik diskusi baru dengan:
+   > • Judul
+   > • Deskripsi
+   > • Foto (opsional)
 
 ## Chatbot dan AI Assistant
-1.	Chatbot bisa diakses dari icon chatbot (selalu tampil di semua halaman)
-2.	Jendela Chat terbuka + quick reply ditampilkan
->	Pengguna bisa:
-•	Ketik pertanyaan pertanian
-•	Chatbot jawab otomatis
-•	Jika butuh diagnosa : chatbot arahkan ke fitur diagnosa
-•	Jika butuh edukasi chatbot akan merekomendasikan artikel
-•	Bisa unggah foto langsung diidentifikasi oleh AI
-•	Chatbot memberi link untuk info tambahan
+
+1. Pengguna membuka fitur AI Assistant
+   > Bisa diakses melalui:
+   > • Tombol "Lihat" di halaman Home
+   > • Menu navbar (yang tampil di semua halaman)
+2. Jendela Chat terbuka
+   > Menampilkan kolom input teks
+   > Pengguna dapat:
+   > • Mengetik pertanyaan seputar pertanian
+   > • Menerima jawaban otomatis dari chatbot
+   > • Mendapatkan informasi pertanian langsung di jendela obrolan
